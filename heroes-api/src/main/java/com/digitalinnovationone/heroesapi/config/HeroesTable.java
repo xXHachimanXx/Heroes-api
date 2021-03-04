@@ -15,8 +15,9 @@ import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
 import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRepositories;
 import org.springframework.context.annotation.Configuration;
 
-import static com.digitalinnovation.livecoding.constants.HeroesConstant.ENDPOINT_DYNAMO;
-import static com.digitalinnovation.livecoding.constants.HeroesConstant.REGION_DYNAMO;
+import static com.digitalinnovationone.heroesapi.constants.HeroConstants.ENDPOINT_DYNAMO;
+import static com.digitalinnovationone.heroesapi.constants.HeroConstants.REGION_DYNAMO;
+
 
 @Configuration
 @EnableDynamoDBRepositories
@@ -24,7 +25,7 @@ public class HeroesTable {
 
     public static void main(String[] args) throws Exception {
         AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard()
-                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration())
+                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(ENDPOINT_DYNAMO, REGION_DYNAMO))
                 .build();
 
         DynamoDB dynamoDB = new DynamoDB(client);
